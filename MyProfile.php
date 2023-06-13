@@ -4,6 +4,7 @@
 <?php require_once("Includes/roles.php"); ?>
 <?php $_SESSION["TrackingURL"]=$_SERVER["PHP_SELF"]; ?>
 <?php Confirm_Login(); ?>
+<?php $Header = "My Profile"; ?>
 <?php
 //Fetching existing admin data
 $AdminId= $_SESSION["User_ID"];
@@ -80,15 +81,7 @@ if(isset($_POST["Submit"])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script src="https://kit.fontawesome.com/d6ea2f9932.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="CSS/styles.css">
-	<title>My Profile</title>
-</head>
+<?php require_once("Includes/Header.php"); ?>
 <body>
 	<!-- NAVBAR -->
 	<div style="height:10px; background:#27aae1;"></div>
@@ -245,25 +238,9 @@ if(isset($_POST["Submit"])){
 	
 	<!-- FOOTER -->
 	
-	<div style="height:10px; background:#27aae1;"></div>
-	<footer class="bg-dark text-white">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-				<p class="lead text-center">Annabel's PHP Training <span id="year"></span></p>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<div style="height:10px; background:#27aae1;"></div>
+	<?php require_once("Includes/Footer.php"); ?>
 	
 	<!-- FOOTER END -->
-	
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script>
-		$('#year').text(new Date().getFullYear());
-	</script>
+
 </body>
 </html>
