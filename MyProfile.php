@@ -30,12 +30,16 @@ if(isset($_POST["Submit"])){
 	$CurrentTime=time();
 	$DateTime=strftime("%B-%d-%Y %H:%M:%S",$CurrentTime);
 	$ARole=0;
-	//Determining bitmask value of $ARole
+	
+	//Determine bitmask value of $ARole
 	if(isset($_POST["Deleter"])){
 		$ARole += Deleter;
 	}
 	if(isset($_POST["Creator"])){
 		$ARole += Creator;
+	}
+	if(isset($_POST["Editor"])){
+		$ARole += Editor;
 	}
 	
 	if(strlen($AHeadline)>12){
@@ -197,11 +201,26 @@ if(isset($_POST["Submit"])){
 							</div>
 							<h2>Roles</h2>
 							<div class="form-group">
-								<input type="checkbox" name="Deleter" id="Deleter" value="Deleter">
+								<input type="checkbox" name="Deleter" id="Deleter" value="Deleter"
+									<?php if($_SESSION["Role"] & Deleter){ ?>
+										checked
+									<?php } ?>
+								>
 								<label for="Deleter">Deleter</label>
 								<br>
-								<input type="checkbox" name="Creator" id="Creator" value="Creator">
+								<input type="checkbox" name="Creator" id="Creator" value="Creator"
+									<?php if($_SESSION["Role"] & Creator){ ?>
+										checked
+									<?php } ?>
+								>
 								<label for="Creator">Creator</label>
+								<br>
+								<input type="checkbox" name="Editor" id="Editor" value="Editor"
+									<?php if($_SESSION["Role"] & Editor){ ?>
+										checked
+									<?php } ?>
+								>
+								<label for="Editor">Editor</label>
 							</div>
 							<div class="row">
 								<div class="col-lg-6 mb-2">
