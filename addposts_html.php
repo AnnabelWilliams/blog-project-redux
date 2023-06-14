@@ -2,10 +2,11 @@
 <?php require_once("Includes/Functions.php"); ?>
 <?php require_once("Includes/Sessions.php"); ?>
 <?php require_once("categories_model.php"); ?>
-<?php require_once("posts_model.php"); ?>
+<?php require_once("addposts_model.php"); ?>
 <?php $_SESSION["TrackingURL"]=$_SERVER["PHP_SELF"]; ?>
 <?php Confirm_Login(); ?>
 <?php $Header = "Add New Post"; ?>
+<?php createNewPost(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once("Includes/Header.php"); ?>
@@ -73,7 +74,7 @@
 			<div class="offset-lg-1 col-lg-10" style="min-height:400px">
 				<?php echo ErrorMessage();
 					  echo SuccessMessage(); ?>
-				<form class="" action="AddNewPost.php" method="post" enctype="multipart/form-data">
+				<form class="" action="addposts_html.php" method="post" enctype="multipart/form-data">
 					<div class="card bg-secondary text-light mb-3">
 						<div class="card-body bg-dark">
 							<div class="form-group">
@@ -110,7 +111,6 @@
 						</div>
 					</div>
 				</form>
-				<?php createNewPost(); ?>
 			</div>
 		</div>
 	</section>

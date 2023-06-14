@@ -1,7 +1,7 @@
 <?php require_once("Includes/DB.php"); ?>
 <?php require_once("Includes/Functions.php"); ?>
 <?php require_once("Includes/Sessions.php"); ?>
-<?php require_once("posts_controller.php"); ?>
+<?php require_once("addposts_controller.php"); ?>
 <?php
 
 	function createNewPost() {
@@ -32,10 +32,10 @@
 				move_uploaded_file($_FILES["image"]["tmp_name"],$Target);
 				if($Execute){
 					$_SESSION["SuccessMessage"] = "Post with id: ".$ConnectingDB->lastInsertId() . " added successfully.";
-					Redirect_to("AddNewPost.php");
+					Redirect_to("addposts_html.php");
 				}else{
 					$_SESSION["ErrorMessage"] = "Something went wrong.";
-					Redirect_to("AddNewPost.php");
+					Redirect_to("addposts_html.php");
 				}
 			}
 		}
