@@ -1,12 +1,10 @@
 <?php require_once("Includes/DB.php"); ?>
 <?php require_once("Includes/Functions.php"); ?>
 <?php require_once("Includes/Sessions.php"); ?>
-<?php require_once("categories_model.php"); ?>
-<?php require_once("addposts_model.php"); ?>
+<?php require_once("addposts_controller.php"); ?>
 <?php $_SESSION["TrackingURL"]=$_SERVER["PHP_SELF"]; ?>
 <?php Confirm_Login(); ?>
 <?php $Header = "Add New Post"; ?>
-<?php createNewPost(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once("Includes/Header.php"); ?>
@@ -83,8 +81,11 @@
 							</div>
 							<div class="form-group">
 								<label for="CategoryTitle"> <span class="FieldInfo"> Choose Category: </span></label>
+								
 								<select class="form-control" id="CategoryTitle" name="CategoryTitle">
-									<?php fetchCategories(); ?>
+								<?php for($i=0; $i < count($categoryOptions); $i++){?>
+									<option> <?php echo $categoryOptions[$i]; ?> </option>
+								<?php } //End of while loop ?>
 								</select>
 							</div>
 							<div class="form-group">
