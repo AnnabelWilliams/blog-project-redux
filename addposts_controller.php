@@ -1,33 +1,22 @@
-<?php require_once("Includes/DB.php"); ?>
-<?php require_once("Includes/Functions.php"); ?>
-<?php require_once("Includes/Sessions.php"); ?>
+<?php require_once("Models/posts_model.php"); ?>
+<?php require_once("Models/categories_model.php"); ?>
 <?php
 	
-	function validateNewPost() {
-		global $PostTitle;
-		global $PostContent;
-		if(empty($PostTitle)){
-			$_SESSION["ErrorMessage"] = "Post title must be filled in.";
-			Redirect_to("addposts_html.php");
-			return FALSE;
-		}elseif(strlen($PostTitle)<5){
-			$_SESSION["ErrorMessage"] = "Post title should be greater than 5 characters.";
-			Redirect_to("addposts_html.php");
-			return FALSE;
-		}elseif(strlen($PostTitle)>49){
-			$_SESSION["ErrorMessage"] = "Post title should be less than 50 characters.";
-			Redirect_to("addposts_html.php");
-			return FALSE;
-		}elseif(strlen($PostContent)>9999){
-			$_SESSION["ErrorMessage"] = "Post content should be less than 10000 characters.";
-			Redirect_to("addposts_html.php");
-			return FALSE;
-		}elseif(!preg_match("/^[A-Za-z0-9. _,.?!]+$/",$PostTitle)){
-			$_SESSION["ErrorMessage"] = "Post title contains invalid characters.";
-			Redirect_to("addposts_html.php");
-			return FALSE;
-		}else{
-			return TRUE;
+	$categoryOptions = fetchCategories();
+	
+	if(isset($_POST["Submit"])){
+		date_default_timezone_set("Europe/London");
+		$CurrentTime=time();
+		$DateTime=strftime("%B-%d-%Y %H:%M:%S",$CurrentTime);
+		if(true == validateNewPost($_POST["PostTitle"],$_POST["Post"])){
+			$insert = createNewPost($_POST["PostTitle"],$_POST["Post"],$_POST["CategoryTitle"],$_FILES["image"]["name"],$_SESSION["Username"],$DateTime);
+			if(false !== $insert){
+				$_SESSION["SuccessMessage"] = "Post with id: ". $insert . " added successfully.";
+				Redirect_to("addposts_html.php");
+			}else{
+				$_SESSION["ErrorMessage"] = "Something went wrong.";
+				Redirect_to("addposts_html.php");
+			}
 		}
 	}
 

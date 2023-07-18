@@ -1,9 +1,8 @@
 <?php require_once("DB.php"); ?>
 <?php
 
-
 function Redirect_to($New_Location){
-	header("Location:".$New_Location);
+	header("Location: ".$New_Location);
 	exit;
 }
 
@@ -41,7 +40,7 @@ function Confirm_Login(){
 		return true;
 	}else{
 		$_SESSION["ErrorMessage"]="Login Required";
-		Redirect_to("Login.php");
+		Redirect_to("login_html.php");
 	}
 }
 
@@ -51,15 +50,9 @@ function TotalRows($table){
 	$stmt = $ConnectingDB->query($sql);
 	$TotalRows = $stmt->fetch();
 	$Total = array_shift($TotalRows);
-	echo $Total;
+	return $Total;
 }
 
-function TotalComments($id,$approved){
-	global $ConnectingDB;
-	$sql = "SELECT COUNT(*) FROM comments WHERE post_id='$id' AND status='$approved'";
-	$stmt = $ConnectingDB->query($sql);
-	$TotalRows = $stmt->fetch();
-	$Total = array_shift($TotalRows);
-	echo $Total;
-}
+
+
 ?>
