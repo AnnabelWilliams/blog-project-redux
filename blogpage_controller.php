@@ -5,7 +5,7 @@
 
 	$fetchedPosts = fetchPosts();
 	
-	$categories = fetchCategories();
+	$fetchedCategories = fetchCategories();
 	
 	$OnComments = array();
 	for($i=0; $i < count($fetchedPosts); $i++){

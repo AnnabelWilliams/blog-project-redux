@@ -8,31 +8,7 @@
 <?php require_once("Includes/Header.php"); ?>
 <body>
 	<!-- NAVBAR -->
-	<div style="height:10px; background:#27aae1;"></div>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container">
-			<a href="blogpage_html.php?page=1" class="navbar-brand">BELLE.COM</a>
-			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapseCMS">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarcollapseCMS">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a href="blogpage_html.php?page=1" class="nav-link">Home</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				<form class="form-inline" action="blogpage_html.php">
-					<div class="form-group">
-					<input class="form-control mr-2" type="text" name="search" placeholder="Search here" value="">
-					<button class="btn btn-primary" name="SearchButton">Go</button>
-					</div>
-				</form>
-			</ul>
-			</div>
-		</div>
-	</nav>
-	<div style="height:10px; background:#27aae1;"></div>
+	<?php require_once("Includes/BlogNavbar.php"); ?>
 	<!-- NAVBAR END -->
 	
 	<!-- HEADER -->
@@ -117,32 +93,7 @@
 			<!-- Main Area End -->
 			
 			<!-- Side Area -->
-			
-			<div class="col-sm-4" style="min-height:40px;">
-				<div class="card mt-4">
-					<div class="card-body">
-						<img src="images/Green_Slime_Dangerous.png" class="d-block img-fluid mb-3" style="min-height:350px;" alt="">
-						<div class="text-center">
-							 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat non sapien a lacinia. Fusce vel dapibus sapien. Maecenas dapibus nunc vitae condimentum eleifend. Maecenas vulputate suscipit dictum. Fusce vestibulum pharetra tortor. Nam purus sapien, ultrices rhoncus quam eget, imperdiet tristique ipsum. Mauris varius vitae ligula eget efficitur. Nullam mattis nibh eros, eu elementum sem scelerisque at. Nullam nec fermentum metus. Vivamus quis nisi diam. 
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="card">
-					<div class="card-header bg-primary text-light">
-						<h2 class="lead">Categories</h2>
-					</div>
-						<div class="card-body">
-							<?php
-								for($i=0; $i < count($fetchedCategories); $i++){
-							?>
-							<a href="blogpage_html.php?category=<?php echo $fetchedCategories[$i][2]; ?>"> <span class="heading"> <?php echo $fetchedCategories[$i][2]; ?></span><br> </a>
-							<?php } //End of while loop ?>
-						
-						</div>
-				</div>
-			</div>
-			
+			<?php require_once("Includes/BlogSidebar.php"); ?>
 			<!-- Side Area End -->
 			
 		</div>
